@@ -1,5 +1,5 @@
 applications:
 - name: minichat
-  host: minichat-original
+  host: minichat-${random-word}
   command: node app
   memory: 128M
