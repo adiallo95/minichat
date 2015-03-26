@@ -4,6 +4,10 @@ var app = require('express')(),
     ent = require('ent'), // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
     fs = require('fs');
 
+// Définition de l'hôte et du port
+var host        = process.env.VCAP_APP_HOST || process.env.HOST || 'localhost';
+var port        = process.env.VCAP_APP_PORT || process.env.PORT || 8080;
+
 // Chargement de la page index.html
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
@@ -26,4 +30,4 @@ io.sockets.on('connection', function (socket, pseudo) {
     }); 
 });
 
-server.listen(8080);
+server.listen(port, host);
